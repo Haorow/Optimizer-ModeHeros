@@ -256,8 +256,6 @@ contactForm.querySelectorAll('input, select, textarea').forEach(field => {
         document.querySelectorAll('#hero-version, #footer-version').forEach(el => {
             el.textContent = version;
         });
-        document.getElementById('footer-text').innerHTML =
-            `${version} © 2026 Optimizer - <a href="https://github.com/${REPO}/blob/master/LICENSE" target="_blank" rel="noopener">GPL v3</a>`;
 
         // Lien de téléchargement direct vers le .zip de la dernière release
         const zipAsset = latest.assets.find(a => a.name.endsWith('.zip'));
