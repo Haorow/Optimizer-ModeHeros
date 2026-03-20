@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://haorow.github.io/Optimizer/sitemap.xml
+Sitemap: https://haorow.github.io/Optimizer-ModeHeros/sitemap.xml
