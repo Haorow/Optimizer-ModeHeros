@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizer - Le multicompte Dofus, réinventé</title>
+    <meta name="description" content="Améliorez votre expérience multicompte Dofus Unity avec Optimizer. Mouse Clone, Hotkey Clone, Window Switcher, Easy Team.">
+    <link rel="icon" type="image/png" href="assets/icons/icon_128.png">
+
+    <!-- SEO — Canonical -->
+    <link rel="canonical" href="https://haorow.github.io/Optimizer">
+
+    <!-- Performance — Préchargement de l'image hero -->
+    <link rel="preload" as="image" href="assets/visuals/hero-bg.webp">
+
+    <!-- Open Graph (Discord, réseaux sociaux) -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://haorow.github.io/Optimizer">
+    <meta property="og:title"       content="Optimizer - Le multicompte Dofus, réinventé">
+    <meta property="og:description" content="Améliorez votre expérience multicompte Dofus Unity avec Optimizer. Mouse Clone, Hotkey Clone, Window Switcher, Easy Team.">
+    <meta property="og:image"       content="https://haorow.github.io/Optimizer/assets/visuals/hero-bg.png">
+    <meta property="og:locale"      content="fr_FR">
+    <meta property="og:site_name"   content="Optimizer">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Optimizer - Le multicompte Dofus, réinventé">
+    <meta name="twitter:description" content="Améliorez votre expérience multicompte Dofus Unity avec Optimizer. Mouse Clone, Hotkey Clone, Window Switcher, Easy Team.">
+    <meta name="twitter:image"       content="https://haorow.github.io/Optimizer/assets/visuals/hero-bg.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Overlay de chargement — masque le scroll de restauration, fond #151515 pour éviter le flash -->
+    <style>
+        #page-overlay {
+            position: fixed;
+            inset: 0;
+            background: #151515;
+            z-index: 99999;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div id="page-overlay"></div>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="mainNav">
+    <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
+            <img src="assets/icons/icon_128.png" alt="Logo Optimizer">
+            <span>Optimizer</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#features">Découvrir</a></li>
+            <li><a href="#download">Téléchargement</a></li>
+            <li><a href="#tutorial">Guide d'utilisation</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-icons">
+            <a href="https://github.com/Haorow/Optimizer" target="_blank" rel="noopener" title="GitHub">
+                <img src="assets/icons/github-32x32.png" alt="GitHub" class="icon-screen">
+            </a>
+            <a href="https://discord.gg/QuDCbB2Xr4" target="_blank" rel="noopener" title="Discord">
+                <img src="assets/icons/icons8-discord-32.png" alt="Discord" class="icon-screen">
+            </a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <!-- Menu mobile — à l'intérieur du nav pour l'effet d'expansion -->
+    <div class="nav-mobile-menu">
+        <a href="#features"  onclick="closeMenu()">Découvrir</a>
+        <a href="#download"  onclick="closeMenu()">Téléchargement</a>
+        <a href="#tutorial"  onclick="closeMenu()">Guide d'utilisation</a>
+        <a href="#faq"       onclick="closeMenu()">FAQ</a>
+        <a href="#contact"   onclick="closeMenu()">Contact</a>
+        <div class="nav-mobile-bottom">
+            <div class="nav-mobile-sep"></div>
+            <div class="nav-mobile-icons">
+                <a href="https://github.com/Haorow/Optimizer" target="_blank" rel="noopener">
+                    <img src="assets/icons/github-32x32.png" alt="GitHub" class="icon-screen">
+                </a>
+                <a href="https://discord.gg/QuDCbB2Xr4" target="_blank" rel="noopener">
+                    <img src="assets/icons/icons8-discord-32.png" alt="Discord" class="icon-screen">
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+    <div class="hero-box">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Optimizer,<br>
+                    le Mode Héros<br>
+                    <span class="grad-green">avant l'heure !</span>
+                </h1>
+
+                <!-- Visuel mobile : entre titre et sous-titre -->
+                <div class="hero-visual--mobile">
+                    <img src="assets/visuals/ui-compact.webp" alt="Interface Optimizer">
+                </div>
+
+                <p class="hero-sub">
+                    Améliorez votre expérience multicompte Dofus avec l'application Optimizer !
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#download" class="btn btn-green">
+                        <img src="assets/icons/win11-50x50.png" alt="" class="icon-screen">
+                        <span class="btn-text-desktop">Télécharger (Windows)</span>
+                        <span class="btn-text-mobile">Disponible sur Windows</span>
+                    </a>
+                    <span class="hero-meta">
+                        <strong id="hero-version">v1.0.0</strong>
+                        &nbsp;·&nbsp;
+                        <a href="https://github.com/Haorow/Optimizer/releases" target="_blank" rel="noopener">
+                            Voir la Release sur GitHub
+                        </a>
+                    </span>
+                    <!-- Badge téléchargements sous hero-meta -->
+                    <div class="dl-badge">
+                        <span>⬇</span>
+                        <span id="dl-count">…</span>
+                        téléchargements
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visuel desktop : à droite, dépasse -->
+            <div class="hero-visual--desktop">
+                <img src="assets/visuals/ui-compact.webp" alt="Interface Optimizer">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features" class="section">
+    <div class="section-inner">
+
+        <div class="section-head reveal">
+            <h2>Le multicompte<br>n'a jamais été <span class="grad-green">si confortable</span></h2>
+            <div class="underline-green"></div>
+            <p>Profitez des différentes fonctionnalités à votre disposition :</p>
+        </div>
+
+        <!-- Carousel (mobile/tablette) -->
+        <div class="carousel-wrap reveal">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="feat-card">
+                    <img class="feat-card-img" src="assets/visuals/mc-illu.webp" alt="Mouse Clone" loading="lazy">
+                    <div class="feat-card-body">
+                        <h3>Mouse Clone</h3>
+                        <p><strong>Le Alt+Tab au tapis :<br>un seul clic pour tous vos personnages !</strong><br>Idéal pour les dialogues de quêtes, ouvertures d'inventaires, les zaaps, et bien d'autres...</p>
+                    </div>
+                </div>
+                <div class="feat-card">
+                    <img class="feat-card-img" src="assets/visuals/hc-illu.webp" alt="Hotkey Clone" loading="lazy">
+                    <div class="feat-card-body">
+                        <h3>Hotkey Clone</h3>
+                        <p><strong>Terminé le Ctrl+C / Ctrl+V :<br>une seule saisie pour chaque fenêtre !</strong><br>Idéal pour la recherche de zaap, la recherche dans les inventaires, les consommables de téléportation.</p>
+                    </div>
+                </div>
+                <div class="feat-card">
+                    <img class="feat-card-img" src="assets/visuals/ws-illu.webp" alt="Window Switcher" loading="lazy">
+                    <div class="feat-card-body">
+                        <h3>Window Switcher</h3>
+                        <p><strong>Ne vous mélangez plus les pinceaux :<br>Changez de fenêtre avec simplicité !</strong><br>Deux modes de navigations s'offrent à vous, défilez dans l'ordre de votre équipe, ou assignez une touche par fenêtre.</p>
+                    </div>
+                </div>
+                <div class="feat-card">
+                    <img class="feat-card-img" src="assets/visuals/et-illu.webp" alt="Easy Team" loading="lazy">
+                    <div class="feat-card-body">
+                        <h3>Easy Team</h3>
+                        <p><strong>Créez votre équipe en un clic :<br>Un seul bouton pour les inviter tous !</strong><br>Fini la perte de temps à cliquer sur vos personnages un par un, invitez les tous en un claquement de doigt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-dots">
+            <button class="cdot active" data-i="0" aria-label="Diapositive 1"></button>
+            <button class="cdot"        data-i="1" aria-label="Diapositive 2"></button>
+            <button class="cdot"        data-i="2" aria-label="Diapositive 3"></button>
+            <button class="cdot"        data-i="3" aria-label="Diapositive 4"></button>
+        </div>
+
+        <!-- Grid (desktop ≥1200px) -->
+        <div class="feat-grid">
+            <div class="feat-card reveal">
+                <img class="feat-card-img" src="assets/visuals/mc-illu.webp" alt="Mouse Clone" loading="lazy">
+                <div class="feat-card-body">
+                    <h3>Mouse Clone</h3>
+                    <p><strong>Le Alt+Tab au tapis :<br>un seul clic pour tous vos personnages !</strong><br>Idéal pour les dialogues de quêtes, ouvertures d'inventaires, les zaaps, et bien d'autres...</p>
+                </div>
+            </div>
+            <div class="feat-card reveal">
+                <img class="feat-card-img" src="assets/visuals/hc-illu.webp" alt="Hotkey Clone" loading="lazy">
+                <div class="feat-card-body">
+                    <h3>Hotkey Clone</h3>
+                    <p><strong>Terminé le Ctrl+C / Ctrl+V :<br>une seule saisie pour chaque fenêtre !</strong><br>Idéal pour la recherche de zaap, la recherche dans les inventaires, les consommables de téléportation.</p>
+                </div>
+            </div>
+            <div class="feat-card reveal">
+                <img class="feat-card-img" src="assets/visuals/ws-illu.webp" alt="Window Switcher" loading="lazy">
+                <div class="feat-card-body">
+                    <h3>Window Switcher</h3>
+                    <p><strong>Ne vous mélangez plus les pinceaux :<br>Changez de fenêtre avec simplicité !</strong><br>Deux modes de navigations s'offrent à vous, défilez dans l'ordre de votre équipe, ou assignez une touche par fenêtre.</p>
+                </div>
+            </div>
+            <div class="feat-card reveal">
+                <img class="feat-card-img" src="assets/visuals/et-illu.webp" alt="Easy Team" loading="lazy">
+                <div class="feat-card-body">
+                    <h3>Easy Team</h3>
+                    <p><strong>Créez votre équipe en un clic :<br>Un seul bouton pour les inviter tous !</strong><br>Fini la perte de temps à cliquer sur vos personnages un par un, invitez les tous en un claquement de doigt.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Spacer décoratif -->
+<div class="section-spacer" aria-hidden="true">
+    <span class="ss-dots">
+        <span class="ss-dot ss-dot--sm"></span>
+        <span class="ss-dot ss-dot--md"></span>
+        <span class="ss-dot ss-dot--lg"></span>
+        <span class="ss-dot ss-dot--md"></span>
+        <span class="ss-dot ss-dot--sm"></span>
+    </span>
+</div>
+
+<!-- ===== POINTS FORTS ===== -->
+<section id="points-forts" class="section">
+    <div class="section-inner">
+        <div class="pf-layout">
+
+            <!-- Visuel caché sur mobile, visible desktop -->
+            <div class="pf-visual reveal">
+                <img src="assets/visuals/ui-full.webp" alt="Interface complète Optimizer" loading="lazy">
+            </div>
+
+            <!-- Bloc contenu #151515 -->
+            <div class="pf-content reveal">
+                <h2>Moins de frustration<br><span class="grad-green">plus de plaisir !</span></h2>
+                <div class="underline-green"></div>
+                <p class="pf-intro">
+                    Conçu pour réduire votre fatigue mentale et simplifier la répétition de vos actions entre vos différents personnages, Optimizer c'est :
+                </p>
+                <ul class="pf-list">
+                    <li>Une prise en main facile</li>
+                    <li>Une interface complète et ergonomique</li>
+                    <li>Des fonctionnalités flexibles</li>
+                    <li>Des mises à jour automatiques</li>
+                    <li>Adaptatif aux performances de votre PC</li>
+                    <li>Gratuit</li>
+                </ul>
+
+                <!-- Laissez-vous guider — intégré dans le même bloc -->
+                <div class="pf-guide">
+                    <h3>Laissez-vous <span class="grad-green">guider</span></h3>
+                    <div class="pf-guide-btns">
+                        <a href="#tutorial" class="btn btn-green">Lire le guide d'utilisation</a>
+                        <a href="#faq"      class="btn btn-outline">Explorer la FAQ</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Spacer décoratif -->
+<div class="section-spacer" aria-hidden="true">
+    <span class="ss-dots">
+        <span class="ss-dot ss-dot--sm"></span>
+        <span class="ss-dot ss-dot--md"></span>
+        <span class="ss-dot ss-dot--lg"></span>
+        <span class="ss-dot ss-dot--md"></span>
+        <span class="ss-dot ss-dot--sm"></span>
+    </span>
+</div>
+
+<!-- ===== BOTTOM CARDS ===== -->
+<section id="download" class="section">
+    <div class="section-inner">
+        <div class="section-head reveal">
+            <h2>Téléchargement</h2>
+            <div class="underline-green"></div>
+        </div>
+    <div class="bc-grid">
+
+        <!-- Support -->
+        <div class="bc-card card-support reveal">
+            <h2>
+                On dit merci qui ?<br>
+                <span class="grad-pink">Merci Optimizer !</span>
+                <span class="bc-card-aside"> (bah quoi ?)</span>
+            </h2>
+            <p>
+                Si Optimizer a transformé votre expérience de jeu en multicompte,
+                ou si vous souhaitez me remercier, vous pouvez me soutenir ici :
+            </p>
+            <a href="https://ko-fi.com/optimizer_modeheros" target="_blank" rel="noopener" class="btn btn-pink">
+                <img src="assets/icons/support-50x50.png" alt="♥" class="icon-white-sm">
+                Supporter Optimizer
+            </a>
+            <p class="bc-note">
+                En me supportant, tu contribues à subvenir à mes besoins quotidiens en café, et ça c'est beau !
+            </p>
+        </div>
+
+        <!-- Download -->
+        <div class="bc-card card-download reveal">
+            <h2>Prêt à l'adopter ?<br><span class="grad-green">C'est par ici !</span></h2>
+            <p>
+                1- Téléchargez et dézippez le dossier<br>
+                2- Lancez et paramétrez Optimizer<br>
+                3- Jouez et profitez !
+            </p>
+            <a id="download-btn" href="https://github.com/Haorow/Optimizer/releases" rel="noopener" class="btn btn-green">
+                <img src="assets/icons/win11-50x50.png" alt="" class="icon-screen">
+                <span class="btn-text-desktop">Télécharger (Windows)</span>
+                <span class="btn-text-mobile">Disponible sur Windows</span>
+            </a>
+            <div class="bc-meta">
+                <span id="footer-version">v1.0.0</span><br>
+                <a href="https://github.com/Haorow/Optimizer/releases" target="_blank" rel="noopener">
+                    Voir la Release sur GitHub
+                </a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</section>
+<!-- ===== GUIDE D'UTILISATION ===== -->
+<!-- Spacer esthétique 40px avant le guide — fond #151515 pour la continuité visuelle -->
+<div class="tut-spacer" aria-hidden="true"></div>
+
+<section id="tutorial" class="section tut-section">
+    <div class="section-inner">
+
+        <div class="section-head reveal">
+            <h2>Guide d'<span class="grad-green">utilisation</span></h2>
+            <div class="section-underline"></div>
+        </div>
+
+        <!-- Conteneur principal #252525 -->
+        <div class="tut-box reveal">
+
+            <!-- Onglets capsules -->
+            <div class="tut-tabs" role="tablist">
+                <button class="tut-tab active" data-tab="0" role="tab">Interface principale</button>
+                <button class="tut-tab" role="tab" data-tab="1">Interface Paramètres</button>
+                <button class="tut-tab" role="tab" data-tab="2">Mouse Clone</button>
+                <button class="tut-tab" role="tab" data-tab="3">Hotkey Clone</button>
+                <button class="tut-tab" role="tab" data-tab="4">Window Switcher</button>
+                <button class="tut-tab" role="tab" data-tab="5">Easy Team</button>
+                <button class="tut-tab" role="tab" data-tab="6">AutoFollow</button>
+                <button class="tut-tab" role="tab" data-tab="7">Tray Icon &amp; Menu d'accès rapide</button>
+            </div>
+
+            <!-- Panneaux -->
+            <div class="tut-panels">
+
+                <!-- Panel 0 : Interface principale -->
+                <div class="tut-panel active" data-panel="0">
+                    <div class="tut-visual">
+                        <img src="assets/visuals/tuto-ui-main.webp" alt="Interface principale" loading="lazy">
+                    </div>
+                    <div class="tut-steps">
+                        <h3 class="tut-title">Interface principale</h3>
+                        <p class="tut-intro">L'interface principale est relativement simple à prendre en main. Elle est composée des éléments suivants :</p>
+                        <ol class="tut-list">
+                            <li><strong>La barre de titre :</strong> Contient la version de l'application, ainsi que le bouton Minimiser, le bouton Réduire et le bouton Fermer de l'application.</li>
+                            <li><strong>La liste des personnages :</strong> Contient vos personnages dont la fenêtre est détectée par l'application. Chaque personnage possède deux boutons pour déplacer sa position dans la liste, et un interrupteur propre à chaque fonctionnalité. Vous pouvez activer une fonctionnalité sur tous les personnages en même temps en cliquant sur l'en-tête de colonne de la fonctionnalité.</li>
+                            <li><strong>Le bouton Rafraîchir :</strong> Permet de mettre à jour la liste des personnages en effectuant une nouvelle détection des fenêtres du jeu.</li>
+                            <li><strong>Le bouton Démarrer/Stopper :</strong> Permet de lancer/arrêter rapidement l'intégralité des fonctionnalités sur tous les personnages.</li>
+                            <li><strong>Le bouton Easy Team :</strong> Permet d'exécuter la fonctionnalité Easy Team.</li>
+                            <li><strong>Le bouton Paramètres :</strong> Permet de déplier/replier l'interface Paramètres.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Panel 1 : Interface Paramètres -->
+                <div class="tut-panel" data-panel="1">
+                    <div class="tut-visual">
+                        <img src="assets/visuals/tuto-ui-settings.webp" alt="Interface Paramètres" loading="lazy">
+                    </div>
+                    <div class="tut-steps">
+                        <h3 class="tut-title">Interface Paramètres</h3>
+                        <p class="tut-intro">L'interface Paramètres peut sembler plus chargée, mais elle n'est pas si difficile à appréhender. Elle comporte des éléments suivants :</p>
+                        <ol class="tut-list">
+                            <li><strong>Paramètre Setup :</strong> Permet de définir la vitesse d'exécution des fonctionnalités selon les performances de votre PC. </li>
+                            <li><strong>Fonctionnalité Mouse Clone :</strong> Activable/Désactivable - Permet de définir le raccourci de la fonctionnalité Mouse Clone, un délai de déclenchement entre chaque réplication de clic, ainsi que le mode de gestion des fenêtres du jeu.</li>
+                            <li><strong>Fonctionnalité Hotkey Clone :</strong> Activable/Désactivable - Permet de définir le raccourci de la fonctionnalité Hotkey Clone, ainsi qu'un délai de déclenchement entre chaque réplication de saisie.</li>
+                            <li><strong>Fonctionnalité Window Switcher :</strong> Activable/Désactivable - Permet de définir le raccourci de la fonctionnalité Window Switcher.</li>
+                            <li><strong>Fonctionnalité Easy Team :</strong> Permet de définir un chef d'équipe, ce qui active le bouton Easy Team dans l'interface principale.</li>
+                            <li><strong>Fonctionnalité AutoFollow :</strong> Activable/Désactivable - Permet de réactiver l'AutoFollow en jeu après une action spécifique grâce à un raccourci alternatif pour les fonctionnalités Mouse Clone et Hotkey Clone. </li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">💡</span>L'interface et les paramètres sont automatiquement sauvegardés et restaurés à chaque session !</p>
+                    </div>
+                </div>
+
+                <!-- Panel 2 : Mouse Clone -->
+                <div class="tut-panel" data-panel="2">
+                    <div class="tut-visual">
+                        <img src="assets/visuals/tuto-mc.webp" alt="Mouse Clone" loading="lazy">
+                    </div>
+                    <div class="tut-steps">
+                        <h3 class="tut-title">Mouse Clone</h3>
+                        <p class="tut-intro">La fonctionnalité permet de répliquer un clic sur tous vos personnages dont la fonctionnalité Mouse Clone est active :</p>
+                        <ol class="tut-list">
+                            <li><strong>Colonne MC :</strong> Permet d'inclure/exclure un personnage dans la fonctionnalité Mouse Clone.</li>
+                            <li><strong>Interrupteur :</strong> Permet d'activer/désactiver la fonctionnalité.</li>
+                            <li><strong>Raccourci :</strong> Permet de définir le raccourci de la fonctionnalité.</li>
+                            <li><strong>Délais de déclenchement :</strong> Activable/Désactivable - Permet de définir un délai aléatoire entre chaque réplication. Le délai aléatoire est compris entre la valeur minimale et la valeur maximale.</li>
+                            <li><strong>Gestion des fenêtres au clic :</strong> Permet de définir comment son gérées les fenêtres des personnages par la fonctionnalité :<br><strong>- Fenêtre unique :</strong> Permet de répliquer un clic sur toutes le fenêtres du jeu depuis la fenêtre de votre personnage au premier plan (désactivé depuis la MAJ 3.5 car rendu inutilisable).<br><strong>- Fenêtres individuelles :</strong> Permet de répliquer un clic en ramenant chaque fenêtre du jeu au premier plan successivement.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">🚀</span>Comment activer et utiliser Mouse Clone :</p>
+                        <ol class="tut-list tut-list--plain">
+                            <li>Paramétrez la fonctionnalité Mouse Clone.</li>
+                            <li>Activez Mouse Clone sur les personnages souhaités (colonne MC dans la liste des personnages).</li>
+                            <li>Activez la fonctionnalité Mouse Clone dans l'interface Paramètres.</li>
+                            <li>En jeu, utilisez le raccourci Mouse Clone pour effectuer un clic répliqué sur les personnages concernés.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">🚨</span>Il est nécessaire d'avoir au minimum deux personnages avec la fonctionnalité Mouse Clone active pour rendre activable l'interrupteur Mouse Clone dans l'interface Paramètres !</p>
+                        <p class="tut-tips tut-tips-second"><span class="tut-tips-icon">🎯</span>Afin de garantir le bon fonctionnement de Mouse Clone, il est fortement recommandé d'utiliser la même disposition d'interface sur tous vos personnages.</p>
+                    </div>
+                </div>
+
+                <!-- Panel 3 : Hotkey Clone -->
+                <div class="tut-panel" data-panel="3">
+                    <div class="tut-visual">
+                        <img src="assets/visuals/tuto-hc.webp" alt="Hotkey Clone" loading="lazy">
+                    </div>
+                    <div class="tut-steps">
+                        <h3 class="tut-title">Hotkey Clone</h3>
+                        <p class="tut-intro">La fonctionnalité permet de répliquer une saisie sur tous vos personnages dont la fonctionnalité Hotkey Clone est active :</p>
+                        <ol class="tut-list">
+                            <li><strong>Colonne HC :</strong> Permet d'inclure/exclure un personnage dans la fonctionnalité Hotkey Clone.</li>
+                            <li><strong>Interrupteur :</strong> Permet d'activer/désactiver la fonctionnalité.</li>
+                            <li><strong>Raccourci :</strong> Permet de définir le raccourci de la fonctionnalité.</li>
+                            <li><strong>Délais de déclenchement :</strong> Activable/Désactivable - Permet de définir un délai aléatoire entre chaque réplication. Le délai aléatoire est compris entre la valeur minimale et la valeur maximale.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">🚀</span>Comment activer et utiliser Hotkey Clone :</p>
+                        <ol class="tut-list tut-list--plain">
+                            <li>Paramétrez la fonctionnalité Hotkey Clone.</li>
+                            <li>Activez Hotkey Clone sur les personnages souhaités (colonne HC dans la liste des personnages).</li>
+                            <li>Activez la fonctionnalité Hotkey Clone dans l'interface Paramètres.</li>
+                            <li>En jeu, utilisez le raccourci Hotkey Clone une première fois pour enregistrer votre prochaine saisie, effectuez votre saisie (touche de raccourci ou plusieurs mots), puis réappuyez sur le raccourci Hotkey Clone pour répliquer votre saisie sur les personnages concernés.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">💡</span>Il est également possible d'enregistrer un ou plusieurs clics, cependant ils seront effectués avant chaque saisie répliquée. Son utilité reste limitée au focus d'un champ de saisie sur vos personnages.</p>
+                        <p class="tut-tips tut-tips-second"><span class="tut-tips-icon">🚨</span>Il est nécessaire d'avoir au minimum deux personnages avec la fonctionnalité Hotkey Clone active pour rendre activable l'interrupteur Hotkey Clone dans l'interface Paramètres !</p>
+                        <p class="tut-tips tut-tips-second"><span class="tut-tips-icon">🎯</span>Afin de garantir le bon fonctionnement de Hotkey Clone, il est fortement recommandé d'utiliser la même disposition d'interface sur tous vos personnages.</p>
+                    </div>
+                </div>
+
+                <!-- Panel 4 : Window Switcher -->
+                <div class="tut-panel" data-panel="4">
+                    <div class="tut-visual">
+                        <img src="assets/visuals/tuto-ws.webp" alt="Window Switcher" loading="lazy">
+                    </div>
+                    <div class="tut-steps">
+                        <h3 class="tut-title">Window Switcher</h3>
+                        <p class="tut-intro">La fonctionnalité permet de basculer entre les fenêtres de vos personnages dont la fonctionnalité Window Switcher est active :</p>
+                        <ol class="tut-list">
+                            <li><strong>Colonne WS :</strong> Permet d'inclure/exclure un personnage dans la fonctionnalité Window Switcher.</li>
+                            <li><strong>Interrupteur :</strong> Permet d'activer/désactiver la fonctionnalité.</li>
+                            <li><strong>Raccourci :</strong> Permet de définir le raccourci de la fonctionnalité.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">🚀</span>Comment activer et utiliser Window Switcher :</p>
+                        <ol class="tut-list tut-list--plain">
+                            <li>Paramétrez la fonctionnalité Window Switcher.</li>
+                            <li>Activez Window Switcher sur les personnages souhaités (colonne WS dans la liste des personnages).</li>
+                            <li>Activez la fonctionnalité Window Switcher dans l'interface Paramètres.</li>
+                            <li>En jeu, utilisez le raccourci Window Switcher pour basculer de la fenêtre de votre personnage actif à la fenêtre du personnage suivant dans la liste.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">🚨</span>Il est nécessaire d'avoir au minimum deux personnages avec la fonctionnalité Window Switcher active pour rendre activable l'interrupteur Window Switcher dans l'interface Paramètres !</p>
+                    </div>
+                </div>
+
+                <!-- Panel 5 : Easy Team -->
+                <div class="tut-panel" data-panel="5">
+                    <div class="tut-visual">
+                        <img src="assets/visuals/tuto-et.webp" alt="Easy Team" loading="lazy">
+                    </div>
+                    <div class="tut-steps">
+                        <h3 class="tut-title">Easy Team</h3>
+                        <p class="tut-intro">La fonctionnalité permet d'inviter en groupe tous vos personnages dont la fonctionnalité Easy Team est active :</p>
+                        <ol class="tut-list">
+                            <li><strong>Colonne ET :</strong> Permet d'inclure/exclure un personnage dans la fonctionnalité Easy Team.</li>
+                            <li><strong>Bouton Easy Team :</strong> Permet d'inviter en groupe tous vos personnages actifs depuis le chef d'équipe.</li>
+                            <li><strong>Définir un chef d'équipe :</strong> Permet de sélectionner le chef d'équipe parmis vos personnages. Le chef d'équipe a automatiquement la fonctionnalité Easy Team activée.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">🚀</span>Comment activer et utiliser Easy Team :</p>
+                        <ol class="tut-list tut-list--plain">
+                            <li>Définissez un chef d'équipe dans les paramètres Easy Team.</li>
+                            <li>Activez Easy Team sur les personnages souhaités (colonne ET dans la liste des personnages).</li>
+                            <li>Appuyez sur le bouton Easy Team et laissez votre chef d'équipe inviter vos personnages.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">🚨</span>Il est nécessaire d'avoir au minimum deux personnages (dont le leader) avec la fonctionnalité Easy Team active pour rendre actif le bouton Easy Team dans l'interface principale !</p>
+                    </div>
+                </div>
+
+                <!-- Panel 6 : AutoFollow -->
+                <div class="tut-panel" data-panel="6">
+                    <div class="tut-visual">
+                        <img src="assets/visuals/tuto-af.webp" alt="AutoFollow" loading="lazy">
+                    </div>
+                    <div class="tut-steps">
+                        <h3 class="tut-title">AutoFollow</h3>
+                        <p class="tut-intro">La fonctionnalité permet de réactiver le suivi de chef d'équipe pour votre groupe :</p>
+                        <ol class="tut-list">
+                            <li><strong>Mouse Clone + AutoFollow :</strong> Activable/Désactivable - Permet d'effectuer Mouse Clone puis réactiver l'AutoFollow sur votre chef d'équipe.</li>
+                            <li><strong>Hotkey Clone + AutoFollow :</strong> Activable/Désactivable - Permet d'effectuer Hotkey Clone puis réactiver l'AutoFollow sur votre chef d'équipe.</li>
+                            <li><strong>Raccourci AutoFollow en jeu :</strong> Permet de définir votre raccourci utilisé en jeu pour réactiver le suivi automatique de votre chef d'équipe.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">🚀</span>Comment activer et utiliser Mouse Clone/Hotkey Clone + AutoFollow :</p>
+                        <ol class="tut-list tut-list--plain">
+                            <li>Activez Mouse Clone/Hotkey Clone si ce n'est pas déjà fait. (requis)</li>
+                            <li>Sélectionnez un chef d'équipe dans Easy Team si ce n'est pas déjà fait. (requis)</li>
+                            <li>Activez la fonctionnalité Mouse Clone/Hotkey Clone + AutoFollow dans l'interface Paramètres.</li>
+                            <li>En jeu, utilisez le raccourci Mouse Clone/Hotkey Clone + AutoFollow pour effectuer un clic/une saisie répliqué(e) sur les personnages concernés, puis réactiver le suivi automatique du chef d'équipe. Les raccourcis Mouse Clone et Hotkey Clone restent également utilisables.</li>
+                        </ol>
+                        <p class="tut-tips"><span class="tut-tips-icon">🚨</span>Vous devrez probablement changer votre raccourci de suivi automatique en jeu. Par défaut, le raccourci en jeu est Ctrl+W, mais dû à certaines contraintes, il n'est pas possible de définir une combinaison de touches en raccourci dans l'application.</p>
+                    </div>
+                </div>
+
+                <!-- Panel 7 : Tray Icon & Menu d'accès rapide -->
+                <div class="tut-panel" data-panel="7">
+                    <div class="tut-visual">
+                        <img src="assets/visuals/tuto-ui-trayicon-menu.webp" alt="Tray Icon & Menu d'accès rapide" loading="lazy">
+                    </div>
+                    <div class="tut-steps">
+                        <h3 class="tut-title">Tray Icon & Menu d'accès rapide</h3>
+                        <p class="tut-intro">Il est possible de masquer l'application dans la barre d'état grâce au bouton Minimiser. Lorsque l'application est minimisée, un menu d'accès rapide peut être ouvert en effectuant un clic droit sur l'icône de l'application :</p>
+                        <ol class="tut-list">
+                            <li><strong>Tray Icon :</strong> Icône de l'application masquée dans la barre d'état.</li>
+                            <li><strong>Afficher :</strong> Permet d'afficher Optimizer à l'écran.</li>
+                            <li><strong>Lancement rapide/Tout arrêter :</strong> Permet de lancer/arrêter rapidement l'intégralité des fonctionnalités sur tous les personnages.</li>
+                            <li><strong>Mouse Clone :</strong> Permet d'activer/désactiver la fonctionnalité Mouse Clone pour tous vos personnages.</li>
+                            <li><strong>Hotkey Clone :</strong> Permet d'activer/désactiver la fonctionnalité Hotkey Clone pour tous vos personnages.</li>
+                            <li><strong>Window Switcher :</strong> Permet d'activer/désactiver la fonctionnalité Window Switcher pour tous vos personnages.</li>
+                            <li><strong>Easy Team :</strong> Permet d'inviter en groupe tous vos personnages (nécessite un chef d'équipe sélectionné).</li>
+                            <li><strong>Fermer :</strong> Permet de fermer Optimizer.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Boutons navigation -->
+                <div class="tut-nav">
+                <button class="tut-nav-btn tut-prev" aria-label="Onglet précédent">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.5 15L7.5 10L12.5 5" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="tut-nav-btn tut-next" aria-label="Onglet suivant">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.5 5L12.5 10L7.5 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                </div>
+
+            </div><!-- /tut-panels -->
+
+        </div><!-- /tut-box -->
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="section faq-section">
+    <div class="section-inner">
+
+        <div class="section-head reveal">
+            <h2>Questions fréquentes</h2>
+            <div class="section-underline"></div>
+        </div>
+
+        <!-- Onglets catégories -->
+        <div class="faq-tabs" role="tablist">
+            <button class="faq-tab active" role="tab" data-faq="0">Installation &amp; Compatibilité</button>
+            <button class="faq-tab" role="tab" data-faq="1">Utilisation</button>
+            <button class="faq-tab" role="tab" data-faq="2">Fonctionnalités</button>
+            <button class="faq-tab" role="tab" data-faq="3">Mises à jour</button>
+            <button class="faq-tab" role="tab" data-faq="4">Problèmes courants</button>
+        </div>
+
+        <!-- Conteneur blanc -->
+        <div class="faq-body reveal">
+
+            <!-- Panel 0 : Installation & Compatibilité -->
+            <div class="faq-panel active" data-panel="0">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Quels sont les prérequis pour utiliser Optimizer&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Aucun prérequis particulier ! AutoHotkey est inclus dans l'application. Il te suffit de télécharger la dernière release, d'extraire le zip et de lancer <code>Optimizer.exe</code>.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Optimizer est-il compatible avec Dofus Rétro&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Non, Optimizer est conçu exclusivement pour Dofus Unity. Cependant, il n'est pas impossible qu'une version adaptée voit le jour si la demande est importante.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>L'application est-elle sécurisée / détectable par les anti-triche de Dofus&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Optimizer utilise AutoHotkey pour simuler des interactions clavier/souris, exactement comme le ferait un joueur humain. Il ne modifie pas les fichiers du jeu, n'injecte pas de code et ne lit pas la mémoire du jeu. À ce jour aucun cas de sanction lié à son utilisation n'a été rapporté, mais nous ne pouvons garantir l'absence de risque et déclinons toute responsabilité en cas de sanction de la part d'Ankama.</p></div>
+                </div>
+            </div>
+
+            <!-- Panel 1 : Utilisation -->
+            <div class="faq-panel" data-panel="1">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Comment ajouter mes personnages dans l'application&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Lance Dofus et connecte tes personnages, puis clique sur le bouton <strong>Refresh</strong> dans Optimizer. Les fenêtres détectées apparaîtront automatiquement dans la liste. Si tes personnages sont déjà en jeu lorsque tu lances Optimizer, ils seront automatiquement détectés par l'application.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Pourquoi certains clics ou touches ne sont-ils pas répliqués&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Essaie de passer la vitesse d'exécution en mode <strong>Lent</strong> ou <strong>Normal</strong> dans les paramètres. Sur certaines configurations, un délai plus important est nécessaire pour que les fenêtres aient le temps de répondre.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Quelle vitesse d'exécution choisir&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <ul>
+                            <li><strong>Lent</strong> - PC anciens ou connexions instables</li>
+                            <li><strong>Normal</strong> - Convient à la majorité des configurations</li>
+                            <li><strong>Rapide</strong> - PC performants avec une connexion stable</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 2 : Fonctionnalités -->
+            <div class="faq-panel" data-panel="2">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Quelle est la différence entre Mouse Clone et Hotkey Clone&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Mouse Clone réplique un simple clic sur toutes les fenêtres actives. Hotkey Clone enregistre une séquence complète (clics + touches) et la réplique sur toutes les fenêtres actives.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Easy Team peut-il inviter automatiquement sans intervention manuelle&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Easy Team automatise l'envoi des invitations <code>/invite</code> depuis la fenêtre du chef d'équipe. L'acceptation de l'invitation reste manuelle, mais Mouse Clone peut faciliter cette étape en répliquant le clic d'acceptation sur toutes les fenêtres simultanément.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Window Switcher fonctionne-t-il avec plus de 2 personnages&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Oui&nbsp;! Window Switcher bascule vers le personnage suivant dans la liste à chaque pression du raccourci, quel que soit le nombre de personnages ayant la fonctionnalité active.</p></div>
+                </div>
+            </div>
+
+            <!-- Panel 3 : Mises à jour -->
+            <div class="faq-panel" data-panel="3">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Comment fonctionne la mise à jour automatique&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>À chaque lancement, Optimizer vérifie automatiquement si une nouvelle version est disponible sur GitHub. Si c'est le cas, elle est téléchargée et installée silencieusement. L'application redémarre ensuite automatiquement.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Mes paramètres sont-ils conservés après une mise à jour&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Oui, tes paramètres sont sauvegardés dans un fichier <code>settings.json</code> indépendant de l'application et ne sont pas affectés par les mises à jour.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>J'ai une erreur de mise à jour (401), que faire&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Il est possible que les requêtes de mise à jour soient saturées, entraînant l'échec de la mise à jour. Si cela se produit, attends une heure avant de réessayer. L'application reste utilisable dans sa version actuelle. Si le problème persiste, tu peux remonter le problème via le formulaire de contact ou sur le serveur Discord.</p></div>
+                </div>
+            </div>
+
+            <!-- Panel 4 : Problèmes courants -->
+            <div class="faq-panel" data-panel="4">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>L'application se ferme sans raison, que faire&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Si cela arrive, essaie de lancer <code>Optimizer.exe</code> en tant qu'administrateur. Si le problème persiste, tu peux remonter le problème via le formulaire de contact ou sur le serveur Discord.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>Une fonctionnalité ne s'exécute pas, que faire&nbsp;?</span>
+                        <svg class="faq-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Vérifie que <code>AutoHotkey64.exe</code> est bien présent dans le dossier Optimizer/Resources/Binaries de l'application. Si c'est le cas, essaie de lancer <code>Optimizer.exe</code> en tant qu'administrateur. Si le problème persiste, tu peux remonter le problème via le formulaire de contact ou sur le serveur Discord.</p></div>
+                </div>
+            </div>
+
+        </div><!-- /faq-body -->
+    </div>
+</section>
+
+<!-- Spacer décoratif -->
+<div class="section-spacer section-spacer--sm" aria-hidden="true">
+    <span class="ss-dots">
+        <span class="ss-dot ss-dot--sm"></span>
+        <span class="ss-dot ss-dot--md"></span>
+        <span class="ss-dot ss-dot--lg"></span>
+        <span class="ss-dot ss-dot--md"></span>
+        <span class="ss-dot ss-dot--sm"></span>
+    </span>
+</div>
+
+<!-- ===== CONTACT + FOOTER ===== -->
+<div class="contact-footer-wrap">
+<section id="contact" class="section contact-section">
+    <div class="section-inner">
+
+        <div class="section-head reveal">
+            <h2>Contact</h2>
+            <div class="section-underline"></div>
+        </div>
+
+        <div class="contact-card reveal">
+            <div class="contact-intro">
+                <p><strong>Vous avez une question, un bug, une suggestion, ou une requête particulière&nbsp;?</strong><br>Vous pouvez transmettre votre message via le formulaire de contact&nbsp;:</p>
+            </div>
+
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xreyyglb" method="POST" novalidate>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contact-email" class="sr-only">Adresse e-mail</label>
+                        <input type="email" id="contact-email" name="email" placeholder="Adresse e-mail">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-motif" class="sr-only">Motif</label>
+                        <div class="form-select-wrap">
+                            <select id="contact-motif" name="motif" required>
+                                <option value="" disabled selected>Motif… *</option>
+                                <option value="bug">Signaler un bug</option>
+                                <option value="suggestion">Suggestion / Fonctionnalité</option>
+                                <option value="question">Question générale</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                            <svg class="select-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-sujet" class="sr-only">Sujet</label>
+                    <input type="text" id="contact-sujet" name="sujet" placeholder="Sujet… *" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-message" class="sr-only">Message</label>
+                    <textarea id="contact-message" name="message" rows="5" placeholder="Décris ton problème ou ta question en détail… *" required></textarea>
+                </div>
+
+                <!-- Checkbox réponse par mail -->
+                <label class="form-check">
+                    <input type="checkbox" id="contact-reply" name="reply">
+                    <span class="form-check-box"></span>
+                    <span class="form-check-label">Je souhaite recevoir une réponse à mon message par mail <span class="form-check-note">(l'adresse e-mail est requise).</span></span>
+                </label>
+
+                <!-- Bouton centré -->
+                <div class="form-submit-wrap">
+                    <button type="submit" class="btn btn-green contact-submit">
+                        <span>Envoyer le message</span>
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+
+                <!-- Message de confirmation -->
+                <div class="form-success" id="formSuccess" hidden>
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" stroke="var(--green)" stroke-width="2"/><path d="M7 11l3 3 5-5" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <p>Message envoyé ! On te répondra dès que possible.</p>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<!-- Panneau légal (slide-up) -->
+<div class="legal-panel" id="legalPanel" aria-hidden="true" inert>
+    <div class="legal-panel-header">
+        <span class="legal-panel-title" id="legalPanelTitle"></span>
+        <button class="legal-panel-close" id="legalPanelClose" aria-label="Fermer">✕</button>
+    </div>
+    <div class="legal-panel-body" id="legalPanelBody"></div>
+</div>
+
+<footer>
+    <p id="footer-text">
+        v1.0.0 © 2026 Optimizer -
+        <a href="https://github.com/Haorow/Optimizer/blob/master/LICENSE" target="_blank" rel="noopener">GPL v3</a>
+        &nbsp;·&nbsp;<button class="legal-btn" data-panel="mentions">Mentions légales</button>
+        &nbsp;·&nbsp;<button class="legal-btn" data-panel="confidentialite">Politique de confidentialité</button>
+    </p>
+    <p class="footer-disclaimer">Dofus est un MMORPG édité par Ankama. Optimizer est un outil non-officiel sans aucun lien avec Ankama Games. Certaines illustrations présentes sur ce site sont la propriété d'Ankama Studio — tous droits réservés.</p>
+</footer>
+</div><!-- /.contact-footer-wrap -->
+
+</main>
+
+<script src="main.js"></script>
+
+<!-- Données structurées JSON-LD (Schema.org) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Optimizer",
+  "description": "Améliorez votre expérience multicompte Dofus Unity avec Optimizer. Mouse Clone, Hotkey Clone, Window Switcher, Easy Team.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Windows",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "url": "https://haorow.github.io/Optimizer",
+  "author": { "@type": "Person", "name": "Haorow" }
+}
+</script>
+</body>
+</html>
