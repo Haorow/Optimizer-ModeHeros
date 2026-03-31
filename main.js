@@ -66,11 +66,12 @@ window.addEventListener('load', () => {
     setTimeout(() => { snapEnabled = true; }, 600);
 });
 
-// Snap JS : après 220 ms d'inactivité, colle à la section la plus proche
+// Snap JS : après 1 s d'inactivité, colle à la section la plus proche (desktop uniquement)
 let snapEnabled = false;
 let snapTimer   = null;
 window.addEventListener('scroll', () => {
     if (!snapEnabled) return;
+    if (window.innerWidth < 1024) return; // désactivé sur mobile
     clearTimeout(snapTimer);
     snapTimer = setTimeout(() => {
         const vh = window.innerHeight;
@@ -82,7 +83,7 @@ window.addEventListener('scroll', () => {
         if (closest && minDist > 8 && minDist < vh * 0.2) {
             closest.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    }, 220);
+    }, 500);
 }, { passive: true });
 
 /* ===== NAV SCROLLED ===== */

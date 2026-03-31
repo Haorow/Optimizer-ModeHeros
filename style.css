@@ -703,12 +703,16 @@ nav.open .nav-mobile-bottom { opacity: 1; }
 .card-support  { background: var(--bg-support); }
 .card-download { background: var(--bg-card); }
 
+/* Bouton téléchargement désactivé sur mobile */
+.btn-desktop-only { pointer-events: none; opacity: 0.4; }
+
 /* Texte bouton adaptatif desktop/mobile */
 .btn-text-desktop { display: none; }
 .btn-text-mobile  { display: inline; }
 @media (min-width: 1024px) {
     .btn-text-desktop { display: inline; }
     .btn-text-mobile  { display: none; }
+    .btn-desktop-only { pointer-events: auto; opacity: 1; }
 }
 
 /* ===== SECTION SPACER ===== */
