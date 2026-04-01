@@ -122,7 +122,7 @@ nav {
         box-shadow 0.35s ease,
         height     0.38s cubic-bezier(0.4, 0, 0.2, 1);
 }
-nav.open { height: calc(100svh - var(--nav-m) * 2); }
+nav.open { height: calc(var(--section-h, 100svh) - var(--nav-m) * 2); }
 
 /* État scrollé : semi-transparent + blur + rétrécissement */
 nav.scrolled {
@@ -257,7 +257,7 @@ nav.open .nav-mobile-bottom { opacity: 1; }
 /* ===== HERO ===== */
 #hero {
     background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg) 100%);
-    min-height: 100svh;
+    min-height: var(--section-h, 100svh);
     display: flex;
     flex-direction: column;
     padding: 90px 10px 10px;
@@ -401,7 +401,7 @@ nav.open .nav-mobile-bottom { opacity: 1; }
 
 /* ===== SECTIONS (base commune) ===== */
 .section {
-    min-height: 100svh;
+    min-height: var(--section-h, 100svh);
     display: flex;
     align-items: center;
     padding: 90px 24px 60px;
@@ -436,8 +436,14 @@ nav.open .nav-mobile-bottom { opacity: 1; }
 /* ===== FEATURES ===== */
 #features {
     background: var(--bg);
-    height: 100svh;
+    height: 100lvh;
     min-height: unset;
+}
+@media (max-width: 1023px) {
+    /* Section s'étire autour du contenu — hauteur fixe du carrousel identique sur tous les navigateurs */
+    #features      { height: auto; min-height: var(--section-h, 100svh); }
+    .carousel-wrap { height: 440px; }
+    .feat-card     { aspect-ratio: unset; }
 }
 
 .carousel-wrap {
@@ -761,8 +767,13 @@ nav.open .nav-mobile-bottom { opacity: 1; }
     box-sizing: border-box;
     /* height fixe = seule façon de contraindre la chaîne flex en dessous
        (min-height seul ne suffit pas : les enfants flex:1 n'ont aucune ref) */
-    height: 100dvh;
-    min-height: 100dvh;
+    height: var(--section-h, 100svh);
+}
+/* Sur mobile : hauteur fixe pour uniformiser sur tous les navigateurs.
+   Visuel fixé à 180px pour laisser le maximum de place au texte scrollable. */
+@media (max-width: 1023px) {
+    .tut-section { height: 740px; min-height: 0; }
+    .tut-visual  { height: 220px; max-height: 220px; aspect-ratio: unset; }
 }
 
 /* section-inner remplit toute la section en colonne */
@@ -1210,12 +1221,12 @@ nav.open .nav-mobile-bottom { opacity: 1; }
 .contact-footer-wrap {
     display: flex;
     flex-direction: column;
-    min-height: 100svh;
+    min-height: var(--section-h, 100svh);
 }
 .contact-section {
     background: var(--bg);
     flex: 1; /* remplit tout l'espace restant — le footer prend sa hauteur naturelle */
-    min-height: 0; /* écrase le min-height: 100vh hérité de .section */
+    min-height: 0; /* écrase le min-height: var(--section-h) hérité de .section */
 }
 
 /* Label accessible mais invisible */

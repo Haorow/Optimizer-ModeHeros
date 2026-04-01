@@ -1,5 +1,17 @@
 const REPO = 'Haorow/Optimizer';
 
+/* ===== VIEWPORT HEIGHT LOCK (mobile) =====
+   Lit 100lvh en pixels via un élément probe et le fige comme variable CSS.
+   Les sections utilisent cette valeur (barre navigateur rétractée = grande hauteur)
+   sans jamais la recalculer → aucun saut lors de l'apparition/disparition des barres. */
+(function () {
+    const p = document.createElement('div');
+    p.style.cssText = 'position:fixed;height:100lvh;top:-9999px;left:-9999px;pointer-events:none;visibility:hidden';
+    document.body.appendChild(p);
+    document.documentElement.style.setProperty('--section-h', p.offsetHeight + 'px');
+    p.remove();
+}());
+
 /* ===== HAMBURGER ===== */
 const hamburger = document.getElementById('hamburger');
 const mainNav   = document.getElementById('mainNav');
